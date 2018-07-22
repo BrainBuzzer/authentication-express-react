@@ -1,0 +1,20 @@
+{
+  "name": "amtica-screening",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"node ./server/bin/www\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrainBuzzer/authentication-express-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrainBuzzer/authentication-express-react/issues"
+  },
+  "homepage": "https://github.com/BrainBuzzer/authentication-express-react#readme",
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  }
+}
