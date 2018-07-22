@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 
 // Database connection
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/kirana')
+mongoose.connect('mongodb://BrainBuzzer:sample1@ds145881.mlab.com:45881/sample-db-amtica')
 
 var usersRouter = require('./routes/users');
 
