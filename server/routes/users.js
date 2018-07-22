@@ -80,7 +80,7 @@ router.get('/protected', function(req, res, next) {
   })
   next()
 }, function(req, res, next) {
-  res.json({message: 'hi'})
+  res.json({message: 'Hi from server side.'})
 })
 
 module.exports = router;

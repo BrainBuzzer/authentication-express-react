@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleUserLogout } from '../actions/auth'
+import { Button } from 'antd'
+import axios from 'axios'
 
 class Protected extends Component {
   constructor(props) {
@@ -10,6 +12,16 @@ class Protected extends Component {
       redirect: false
     }
     this.logout = this.logout.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/protected', {
+      headers: {
+        'token': this.props.auth.token
+      }
+    }).then(res => {
+      this.setState({ data: res.data.message })
+    })
   }
 
   logout(e) {
@@ -24,8 +36,8 @@ class Protected extends Component {
     }
     return (
       <div>
-        Protected Data
-        <button onClick={this.logout}>Logout</button>
+        Protected Data fetched from server: {this.state.data}
+        <Button onClick={this.logout}>Logout</Button>
       </div>
     );
   }
