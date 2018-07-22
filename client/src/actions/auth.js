@@ -3,12 +3,12 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 /**
  * 
- * @param { token, username } payload
+ * @param { String } token
  */
-export function handleUserLogin (payload) {
+export function handleUserLogin (token) {
   return {
     type: USER_LOGIN,
-    payload
+    token
   }
 }
 

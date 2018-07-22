@@ -6,10 +6,12 @@ import {
 export function auth (state = { token: null }, action) {
   switch (action.type) {
     case USER_LOGIN:
+      localStorage.setItem('API_TOKEN', action.token)
       return {
-        ...action.payload
+        token: action.token
       }
     case USER_LOGOUT:
+      localStorage.removeItem('API_TOKEN')
       return {
         token: null
       }

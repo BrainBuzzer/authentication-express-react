@@ -18,6 +18,10 @@ class Register extends Component {
       redirectL: false,
     }
     this.handleRegister = this.handleRegister.bind(this)
+    let i = localStorage.getItem('API_TOKEN')
+    if(i !== null) {
+      this.props.dispatch(handleUserLogin(i))
+    }
   }
 
   handleUsernameChange(e) {
@@ -42,7 +46,7 @@ class Register extends Component {
           if(res.status === 200) {
             userLogin(this.state.username, this.state.password).then(loginres => {
               if(loginres.status === 200) {
-                this.props.dispatch(handleUserLogin({ token: loginres.data.token, username: this.state.username }))
+                this.props.dispatch(handleUserLogin(loginres.data.token))
                 this.setState({ redirect: true })
               } else {
                 message.error('Some error occurred. Please check your credentials.')
@@ -56,7 +60,7 @@ class Register extends Component {
   }
 
   render() {
-    if(this.state.redirect) {
+    if(this.state.redirect || this.props.auth.token !== null) {
       return <Redirect to='/protected' />
     }
     if(this.state.redirectL) {

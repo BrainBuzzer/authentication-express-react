@@ -18,6 +18,10 @@ class Login extends Component {
       redirectR: false,
     }
     this.handleLogin = this.handleLogin.bind(this)
+    let i = localStorage.getItem('API_TOKEN')
+    if(i !== null) {
+      this.props.dispatch(handleUserLogin(i))
+    }
   }
 
   handleUsernameChange(e) {
@@ -33,7 +37,7 @@ class Login extends Component {
     if(this.state.username !== '' && this.state.password !== '') {
       userLogin(this.state.username, this.state.password).then(loginres => {
         if(loginres.status === 200) {
-          this.props.dispatch(handleUserLogin({ token: loginres.data.token, username: this.state.username }))
+          this.props.dispatch(handleUserLogin(loginres.data.token))
         }
       }).catch(err => {
         message.error(err.message + '. Please check your credentials.')

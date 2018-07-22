@@ -9,7 +9,8 @@ class Protected extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      redirect: false
+      redirect: false,
+      token: localStorage.getItem('API_TOKEN')
     }
     this.logout = this.logout.bind(this)
   }
@@ -31,7 +32,7 @@ class Protected extends Component {
   }
 
   render() {
-    if(this.props.auth.token === null || this.state.redirect) {
+    if(this.props.auth.token === null || this.state.token === null || this.state.redirect) {
       return <Redirect to='/' />
     }
     return (
