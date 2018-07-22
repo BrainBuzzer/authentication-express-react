@@ -18,9 +18,7 @@ router.post('/register', function(req, res) {
           username: req.body.username,
           password: hash
         });
-        console.log(req.body)
         user.save().then(function(result) {
-          console.log(result);
           res.status(200).json({
             success: 'New user has been created'
           });
