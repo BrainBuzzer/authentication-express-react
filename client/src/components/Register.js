@@ -8,6 +8,10 @@ import { message, Form, Icon, Input, Button, Layout } from 'antd';
 const { Content } = Layout
 const FormItem = Form.Item;
 
+/**
+ * @description This route is also the home page.
+ * User can register themselves in this route.
+ */
 class Register extends Component {
   constructor(props) {
     super(props)

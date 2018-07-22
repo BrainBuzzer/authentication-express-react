@@ -5,6 +5,9 @@ import Register from './Register'
 import Login from './Login'
 import Protected from './Protected'
 
+/**
+ * @description This component has all the routes present.
+ */
 class App extends Component {
   render () {
     return (

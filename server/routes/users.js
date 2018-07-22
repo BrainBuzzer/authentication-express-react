@@ -5,6 +5,10 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+/**
+ * @description New user is created by using User model
+ * present under ../models/User file.
+ */
 router.post('/register', function(req, res) {
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(req.body.password, salt, function(err, hash) {
@@ -32,6 +36,10 @@ router.post('/register', function(req, res) {
   });
 });
 
+/**
+ * @description This part generates a JWT token and provides it
+ * back to the user to login.
+ */
 router.post('/login', function(req, res) {
   User.findOne({username: req.body.username})
   .exec()
@@ -69,6 +77,10 @@ router.post('/login', function(req, res) {
   });;
 });
 
+/**
+ * @description This route cannot be accessed without providing
+ * JWT token generated in the header - token.
+ */
 router.get('/protected', function(req, res, next) {
   jwt.verify(req.headers.token, 'supersecret', function(err, decode) {
     if(err) {

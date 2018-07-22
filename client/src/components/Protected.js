@@ -5,6 +5,10 @@ import { handleUserLogout } from '../actions/auth'
 import { Button } from 'antd'
 import axios from 'axios'
 
+/**
+ * @description This is protected route where
+ * you cannot get in without authentication.
+ */
 class Protected extends Component {
   constructor(props) {
     super(props)

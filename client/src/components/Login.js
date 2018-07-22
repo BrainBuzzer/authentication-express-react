@@ -8,6 +8,11 @@ import { message, Form, Icon, Input, Button, Layout } from 'antd';
 const { Content } = Layout
 const FormItem = Form.Item;
 
+/**
+ * @description This component logs user in.
+ * Tokens generated on server side are stored
+ * in localStorage.
+ */
 class Login extends Component {
   constructor(props) {
     super(props)
